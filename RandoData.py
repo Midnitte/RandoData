@@ -109,20 +109,17 @@ list_of_companies = word_generator(5)
 def build_dataframe():
     """Return a dataframe made of several companies with random data"""
     my_frame_data = pd.DataFrame()
-    #list_of_companies = word_generator(5)
-    #print(list_of_companies)
-    #mini_data = pd.DataFrame()
     for company in list_of_companies:
         mini_data = pd.DataFrame()
         mini_data['Data'] = random.choice(list_of_graphs)(10)
         mini_data['Company'] = company
         mini_data['Dates'] = random_dates(10)
         print(mini_data)
-        my_frame_data.append(mini_data, ignore_index=True) # Only works when "return" for some reason..
+        my_frame_data = my_frame_data.append(mini_data, ignore_index=True) # Append doesn't happen in-place, so we have to store it..
         print(my_frame_data)
     return my_frame_data
 
-    # For some reason it is not appending the dataframe as expected...
+
 
 example = build_dataframe()
 
@@ -134,4 +131,3 @@ print(example)
 
 # TODO:
 # Sort date before building DataFrame
-# Fix Dataframe appending inside for loop
