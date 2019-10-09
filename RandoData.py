@@ -115,7 +115,7 @@ def build_dataframe():
     my_frame_data = pd.DataFrame()
     for company in list_of_companies:
         mini_data = pd.DataFrame()
-        mini_data['Data'] = random.choice(list_of_graphs)(200)
+        mini_data['Data'] = random.choice(list_of_graphs)(200, positive=bool(random.choice([True, False])))
         mini_data['Company'] = company
         mini_data['Dates'] = random_dates(200)
         my_frame_data = my_frame_data.append(mini_data, ignore_index=True) # Append doesn't happen in-place, so we have to store it..
@@ -126,7 +126,7 @@ def build_dataframe():
 
 example = build_dataframe()
 
-build_dataframe().to_csv('savederp3.csv')
+#build_dataframe().to_csv('savederp3.csv')
 
 print(example)
 
